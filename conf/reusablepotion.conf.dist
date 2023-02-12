@@ -5,15 +5,31 @@
 [worldserver]
 
 ########################################
-# My module configuration
+# ReusablePotion configuration
 ########################################
 #
-#    MyModule.Enable
-#        Description: Enable my module and print "Hello World" message at server start
+#    ReusablePotion.Enable
+#        Description: Enables the reusable potion item.
 #        Default:     0 - Disabled
 #                     1 - Enabled
 #
 
 ReusablePotion.Enable = 1
+
+#
+#    ReusablePotion.PvPEnable
+#        Description: Allows the reusable potion in pvp combat.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
 ReusablePotion.PvPEnable = 1
+
+#
+#    ReusablePotion.HealPercent
+#        Description: The percentage of health to heal when using the potion.
+#        Default:     25 - Disabled
+#        Range:       0 - 100
+#
+
 ReusablePotion.HealPercent = 25
