@@ -1,3 +1,4 @@
+# ![Azeroth Core](https://i.imgur.com/fQwb8m3.png) Reusable Potion
 # ![ReusablePotionItem](https://cdn.discordapp.com/attachments/305618993794908162/1074140366082687048/Untitled.png)
 
 ## About
