@@ -28,7 +28,7 @@ ReusablePotion.PvPEnable = 1
 #
 #    ReusablePotion.HealPercent
 #        Description: The percentage of health to heal when using the potion.
-#        Default:     25 - Disabled
+#        Default:     25
 #        Range:       0 - 100
 #
 
