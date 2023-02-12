@@ -79,17 +79,32 @@ void ReusablePotionPlayerScript::OnPlayerEnterCombat(Player* player, Unit* enemy
         return;
     }
 
+    if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
+    {
+        return;
+    }
+
     SetPlayerPvPState(player, true);
     SetPlayerPvPState(enemy->ToPlayer(), true);
 }
 
 void ReusablePotionPlayerScript::OnPlayerLeaveCombat(Player* player)
 {
+    if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
+    {
+        return;
+    }
+
     SetPlayerPvPState(player, false);
 }
 
 void ReusablePotionUnitScript::OnDamage(Unit* attacker, Unit* victim, uint32& /*damage*/)
 {
+    if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
+    {
+        return;
+    }
+
     if (!attacker)
     {
         return;
@@ -123,6 +138,11 @@ void ReusablePotionUnitScript::OnDamage(Unit* attacker, Unit* victim, uint32& /*
 
 void ReusablePotionUnitScript::ModifyHealReceived(Unit* target, Unit* healer, uint32& addHealth, SpellInfo const* spellInfo)
 {
+    if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
+    {
+        return;
+    }
+
     if (!target || !healer)
     {
         return;
