@@ -17,6 +17,16 @@
 ReusablePotion.Enable = 1
 
 #
+#    ReusablePotion.Verbose
+#        Description: Enables the verbose logging.
+#        Note: Keep this off on production unless debugging.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+ReusablePotion.Verbose = 1
+
+#
 #    ReusablePotion.PvPEnable
 #        Description: Allows the reusable potion in pvp combat.
 #        Default:     0 - Disabled

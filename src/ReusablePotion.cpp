@@ -47,6 +47,10 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
 
     if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
     {
+        if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+        {
+            LOG_INFO("module", "ReusablePotion(CanCastItemUseSpell:Disabled)");
+        }
         ChatHandler(player->GetSession()).SendSysMessage("This item is disabled.");
         return true;
     }
@@ -55,11 +59,27 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
     {
         bool isInPvPCombat = GetPlayerPvPState(player);
 
+        if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+        {
+            LOG_INFO("module", "ReusablePotion(CanCastItemUseSpell:PVPCheck)");
+        }
+
         if (isInPvPCombat)
         {
             ChatHandler(player->GetSession()).SendSysMessage("This item is disabled in pvp.");
+
+            if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+            {
+                LOG_INFO("module", "ReusablePotion(CanCastItemUseSpell:PvPDisabled)");
+            }
+
             return true;
         }
+    }
+
+    if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+    {
+        LOG_INFO("module", "ReusablePotion(CanCastItemUseSpell)");
     }
 
     player->CastSpell(player, SPELLID_HEALING_POTION);
@@ -74,7 +94,12 @@ void ReusablePotionPlayerScript::OnPlayerEnterCombat(Player* player, Unit* enemy
         return;
     }
 
-    if (!enemy && !enemy->ToPlayer())
+    if (!enemy)
+    {
+        return;
+    }
+
+    if (!enemy->ToPlayer())
     {
         return;
     }
@@ -82,6 +107,11 @@ void ReusablePotionPlayerScript::OnPlayerEnterCombat(Player* player, Unit* enemy
     if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
     {
         return;
+    }
+
+    if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+    {
+        LOG_INFO("module", "ReusablePotion(OnPlayerEnterCombat)");
     }
 
     SetPlayerPvPState(player, true);
@@ -90,9 +120,19 @@ void ReusablePotionPlayerScript::OnPlayerEnterCombat(Player* player, Unit* enemy
 
 void ReusablePotionPlayerScript::OnPlayerLeaveCombat(Player* player)
 {
+    if (!player)
+    {
+        return;
+    }
+
     if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
     {
         return;
+    }
+
+    if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+    {
+        LOG_INFO("module", "ReusablePotion(OnPlayerLeaveCombat)");
     }
 
     SetPlayerPvPState(player, false);
@@ -127,8 +167,17 @@ void ReusablePotionUnitScript::OnDamage(Unit* attacker, Unit* victim, uint32& /*
         return;
     }
 
+    if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+    {
+        LOG_INFO("module", "ReusablePotion(OnDamage)");
+    }
+
     if (attPlayer->GetGUID() == victPlayer->GetGUID())
     {
+        if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+        {
+            LOG_INFO("module", "ReusablePotion(OnDamage:DamageSelf)");
+        }
         return;
     }
 
@@ -157,6 +206,8 @@ void ReusablePotionUnitScript::ModifyHealReceived(Unit* target, Unit* healer, ui
     {
         return;
     }
+
+    LOG_INFO("module", "ReusablePotion(ModifyHealReceived)");
 
     float healPercent = sConfigMgr->GetOption<float>("ReusablePotion.HealPercent", 25.0);
     float healAmount = target->ToPlayer()->CountPctFromMaxHealth(healPercent);
