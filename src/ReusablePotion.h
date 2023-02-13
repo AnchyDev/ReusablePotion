@@ -3,8 +3,8 @@
 
 #include "ScriptMgr.h"
 #include "Player.h"
-#include "StatBoostMgr.h"
 #include "Spell.h"
+#include "Chat.h"
 #include "Config.h"
 
 enum ReusablePotionConstants
