@@ -207,7 +207,10 @@ void ReusablePotionUnitScript::ModifyHealReceived(Unit* target, Unit* healer, ui
         return;
     }
 
-    LOG_INFO("module", "ReusablePotion(ModifyHealReceived)");
+    if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
+    {
+        LOG_INFO("module", "ReusablePotion(ModifyHealReceived)");
+    }
 
     float healPercent = sConfigMgr->GetOption<float>("ReusablePotion.HealPercent", 25.0);
     float healAmount = target->ToPlayer()->CountPctFromMaxHealth(healPercent);
