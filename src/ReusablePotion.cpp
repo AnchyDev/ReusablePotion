@@ -86,7 +86,7 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
 
     player->CastSpell(player, SPELLID_HEALING_POTION);
 
-    uint32 potionCooldown = 30 * IN_MILLISECONDS;
+    uint32 potionCooldown = sConfigMgr->GetOption<uint32>("ReusablePotion.Cooldown", 15) * IN_MILLISECONDS;
     auto dummySpellInfo = sSpellMgr->GetSpellInfo(SPELLID_DUMMY);
 
     player->AddSpellCooldown(SPELLID_DUMMY, ITEMID_HEALING_POTION, potionCooldown, true, true);
@@ -99,6 +99,8 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
     itemCooldownPacket << item->GetGUID();
     itemCooldownPacket << SPELLID_DUMMY;
     player->GetSession()->SendPacket(&itemCooldownPacket);
+
+    player->ModifySpellCooldown(SPELLID_DUMMY, -(ITEM_COOLDOWN_BASE * IN_MILLISECONDS) + potionCooldown);
 
     return false;
 }

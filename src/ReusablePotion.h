@@ -12,7 +12,8 @@ enum ReusablePotionConstants
 {
     ITEMID_HEALING_POTION = 44728,
     SPELLID_HEALING_POTION = 53144,
-    SPELLID_DUMMY = 40677
+    SPELLID_DUMMY = 40677,
+    ITEM_COOLDOWN_BASE = 30
 };
 
 std::unordered_map<uint64, bool> playerPvpMap;

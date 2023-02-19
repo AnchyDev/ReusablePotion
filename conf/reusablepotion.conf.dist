@@ -43,3 +43,12 @@ ReusablePotion.PvPEnable = 0
 #
 
 ReusablePotion.HealPercent = 30
+
+#
+#    ReusablePotion.Cooldown
+#        Description: The cooldown for the potion in seconds.
+#        Default:     15
+#        Range:       0 - 30
+#
+
+ReusablePotion.Cooldown = 15
