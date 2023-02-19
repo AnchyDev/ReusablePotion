@@ -95,7 +95,7 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
     player->BuildCooldownPacket(cooldownPacket, SPELL_COOLDOWN_FLAG_NONE, SPELLID_DUMMY, potionCooldown);
     player->GetSession()->SendPacket(&cooldownPacket);
 
-    WorldPacket itemCooldownPacket(SMSG_ITEM_COOLDOWN, 12);
+    WorldPacket itemCooldownPacket(SMSG_ITEM_COOLDOWN, 8 + 4);
     itemCooldownPacket << item->GetGUID();
     itemCooldownPacket << SPELLID_DUMMY;
     player->GetSession()->SendPacket(&itemCooldownPacket);
