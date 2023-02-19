@@ -51,8 +51,10 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
         {
             LOG_INFO("module", "ReusablePotion(CanCastItemUseSpell:Disabled)");
         }
+
         ChatHandler(player->GetSession()).SendSysMessage("This item is disabled.");
-        return true;
+
+        return false;
     }
 
     if (!sConfigMgr->GetOption<bool>("ReusablePotion.PvPEnable", false))
@@ -73,7 +75,7 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
                 LOG_INFO("module", "ReusablePotion(CanCastItemUseSpell:PvPDisabled)");
             }
 
-            return true;
+            return false;
         }
     }
 
@@ -84,7 +86,21 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
 
     player->CastSpell(player, SPELLID_HEALING_POTION);
 
-    return true;
+    uint32 potionCooldown = 30 * IN_MILLISECONDS;
+    auto dummySpellInfo = sSpellMgr->GetSpellInfo(SPELLID_DUMMY);
+
+    player->AddSpellCooldown(SPELLID_DUMMY, ITEMID_HEALING_POTION, potionCooldown, true, true);
+
+    WorldPacket cooldownPacket;
+    player->BuildCooldownPacket(cooldownPacket, SPELL_COOLDOWN_FLAG_NONE, SPELLID_DUMMY, potionCooldown);
+    player->GetSession()->SendPacket(&cooldownPacket);
+
+    WorldPacket itemCooldownPacket(SMSG_ITEM_COOLDOWN, 12);
+    itemCooldownPacket << item->GetGUID();
+    itemCooldownPacket << SPELLID_DUMMY;
+    player->GetSession()->SendPacket(&itemCooldownPacket);
+
+    return false;
 }
 
 void ReusablePotionPlayerScript::OnPlayerEnterCombat(Player* player, Unit* enemy)

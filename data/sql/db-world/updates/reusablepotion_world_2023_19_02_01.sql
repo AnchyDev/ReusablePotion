@@ -1,5 +1,5 @@
 SET @REUSABLE_POTION_NAME:='Reusable Healing Potion';
-SET @REUSABLE_POTION_DESCRIPTION:='|cff00ff00Use: Restores 25% of your health pool. (15 Sec Cooldown)|r';
+SET @REUSABLE_POTION_DESCRIPTION:='|cff00ff00Use: Restores 30% of your health pool. (30 Sec Cooldown)|r';
 SET @REUSABLE_POTION_DUMMYSPELL:=40677; -- Dummy Spell (For Cooldown)
 
 DELETE FROM `item_template` WHERE (`entry` = 44728);

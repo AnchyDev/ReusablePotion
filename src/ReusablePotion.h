@@ -6,11 +6,13 @@
 #include "Spell.h"
 #include "Chat.h"
 #include "Config.h"
+#include "OpCodes.h"
 
 enum ReusablePotionConstants
 {
     ITEMID_HEALING_POTION = 44728,
-    SPELLID_HEALING_POTION = 53144
+    SPELLID_HEALING_POTION = 53144,
+    SPELLID_DUMMY = 40677
 };
 
 std::unordered_map<uint64, bool> playerPvpMap;
