@@ -6,7 +6,6 @@
 #include "Spell.h"
 #include "Chat.h"
 #include "Config.h"
-#include "OpCodes.h"
 
 enum ReusablePotionConstants
 {
