@@ -87,7 +87,6 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
     player->CastSpell(player, SPELLID_HEALING_POTION);
 
     uint32 potionCooldown = sConfigMgr->GetOption<uint32>("ReusablePotion.Cooldown", 15) * IN_MILLISECONDS;
-    auto dummySpellInfo = sSpellMgr->GetSpellInfo(SPELLID_DUMMY);
 
     player->AddSpellCooldown(SPELLID_DUMMY, ITEMID_HEALING_POTION, potionCooldown, true, true);
 
