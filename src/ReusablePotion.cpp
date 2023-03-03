@@ -104,37 +104,6 @@ bool ReusablePotionPlayerScript::CanCastItemUseSpell(Player* player, Item* item,
     return false;
 }
 
-void ReusablePotionPlayerScript::OnPlayerEnterCombat(Player* player, Unit* enemy)
-{
-    if (!player)
-    {
-        return;
-    }
-
-    if (!enemy)
-    {
-        return;
-    }
-
-    if (!enemy->ToPlayer())
-    {
-        return;
-    }
-
-    if (!sConfigMgr->GetOption<bool>("ReusablePotion.Enable", false))
-    {
-        return;
-    }
-
-    if (sConfigMgr->GetOption<bool>("ReusablePotion.Verbose", false))
-    {
-        LOG_INFO("module", "ReusablePotion(OnPlayerEnterCombat)");
-    }
-
-    SetPlayerPvPState(player, true);
-    SetPlayerPvPState(enemy->ToPlayer(), true);
-}
-
 void ReusablePotionPlayerScript::OnPlayerLeaveCombat(Player* player)
 {
     if (!player)
