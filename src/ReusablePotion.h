@@ -25,7 +25,6 @@ public:
     ReusablePotionPlayerScript() : PlayerScript("ReusablePotionPlayerScript") { }
 
     bool CanCastItemUseSpell(Player* /*player*/, Item* /*item*/, SpellCastTargets const& /*targets*/, uint8 /*cast_count*/, uint32 /*glyphIndex*/) override;
-    void OnPlayerEnterCombat(Player* /*player*/, Unit* /*enemy*/) override;
     void OnPlayerLeaveCombat(Player* /*player*/) override;
 };
 
