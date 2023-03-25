@@ -1,0 +1,1 @@
+DELETE FROM item_instance where itemEntry = 44728;
