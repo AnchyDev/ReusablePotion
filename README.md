@@ -1,14 +1,12 @@
 # ![Azeroth Core](https://i.imgur.com/fQwb8m3.png) Reusable Potion
-# ![ReusablePotionItem](https://cdn.discordapp.com/attachments/305618993794908162/1074140366082687048/Untitled.png)
 
 ## About
 
-Reusable Potion is a module for Azeroth Core that implements a reusable scalable potion in combat.
+Reusable Potion is a module for Azeroth Core that allows players to re-use health potions in combat.
 
 ## Features
 
 - Disable in PvP
-- Heals a percentage.
 
 ## Install
 

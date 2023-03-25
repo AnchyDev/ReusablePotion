@@ -1,1 +1,1 @@
-DELETE FROM item_instance where itemEntry = 44728;
+DELETE FROM item_instance WHERE itemEntry = 44728;
