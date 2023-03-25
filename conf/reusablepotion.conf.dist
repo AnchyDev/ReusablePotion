@@ -9,7 +9,7 @@
 ########################################
 #
 #    ReusablePotion.Enable
-#        Description: Enables the reusable potion item.
+#        Description: Enables potions to be re-usable in combat.
 #        Default:     0 - Disabled
 #                     1 - Enabled
 #
@@ -28,27 +28,9 @@ ReusablePotion.Verbose = 0
 
 #
 #    ReusablePotion.PvPEnable
-#        Description: Allows the reusable potion in pvp combat.
+#        Description: Allows potions to be re-usable in pvp combat.
 #        Default:     0 - Disabled
 #                     1 - Enabled
 #
 
 ReusablePotion.PvPEnable = 0
-
-#
-#    ReusablePotion.HealPercent
-#        Description: The percentage of health to heal when using the potion.
-#        Default:     30
-#        Range:       0 - 100
-#
-
-ReusablePotion.HealPercent = 30
-
-#
-#    ReusablePotion.Cooldown
-#        Description: The cooldown for the potion in seconds.
-#        Default:     15
-#        Range:       0 - 30
-#
-
-ReusablePotion.Cooldown = 15
