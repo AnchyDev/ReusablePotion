@@ -7,6 +7,7 @@
 ########################################
 # ReusablePotion configuration
 ########################################
+
 #
 #    ReusablePotion.Enable
 #        Description: Enables potions to be re-usable in combat.
@@ -14,7 +15,34 @@
 #                     1 - Enabled
 #
 
-ReusablePotion.Enable = 0
+ReusablePotion.Enable = 1
+
+#
+#    ReusablePotion.EnableHealing
+#        Description: Enables Healing potions to be re-usable in combat
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+ReusablePotion.EnableHealing = 1
+
+#
+#    ReusablePotion.EnableAura
+#        Description: Enables Aura potions to be re-usable in combat. Eg haste potion,restoration potion
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+ReusablePotion.EnableAura = 1
+
+#
+#    ReusablePotion.EnableMana
+#        Description: Enables Mana potions to be re-usable in combat.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+ReusablePotion.EnableMana = 1
 
 #
 #    ReusablePotion.Verbose
