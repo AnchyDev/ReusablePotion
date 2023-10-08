@@ -15,7 +15,7 @@
 #                     1 - Enabled
 #
 
-ReusablePotion.Enable = 1
+ReusablePotion.Enable = 0
 
 #
 #    ReusablePotion.EnableHealing
